@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Neboer's Boat - {{ current }}</title>
+    <script src="/library/jquery-3.4.1.min.js"></script>
+    <script src="/library/popper.min.js"></script>
+    <script src="/library/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/library/bootstrap.min.css">
+    <script src="/library/font_awesome.js"></script>
+</head>
+
+<body>
+<div class="biggest">
+    <header class="py-lg-2">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="text-center mx-auto">
+                <h1 class="large-op">Neboer's Boat</h1>
+                <small>Neboer's blog isn't only about technique!</small>
+            </div>
+            <div class="icon-plate">
+                <a class="text-muted alinement"><i class="fab fa-github"></i></a>
+                <a class="text-muted alinement"><i class="fas fa-envelope"></i></a>
+                <a class="text-muted alinement"><i class="fas fa-search"></i></a>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="nav-scroller py-1 mb-2">
+        <ul class="nav nav-tabs flex-fill">
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link" href="/"><i class="fas fa-home"></i>主页</a>
+            </li>
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link active" href="/newest"><i class="fas fa-list"></i>最新的</a>
+            </li>
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link " href="/sort"><i class="fas fa-filter"></i>分类</a>
+            </li>
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link " href="#"><i class="fas fa-book-open"></i>看博文</a>
+            </li>
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link " href="#"><i class="fas fa-edit"></i>编辑博文</a>
+            </li>
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link " href="/newBlogQuill"><i class="fas fa-plus"></i>写博客</a>
+            </li>
+        </ul>
+    </div>
+
+    <img src="https://dummyimage.com/1200x200/000/fff" alt="banner-image" class="banner m-auto">
+    <h2 style="padding-bottom:.3em;border-bottom: 1px solid #eaecef;">
+        <a id="user-content-neboer" class="anchor" aria-hidden="true" href="#neboer"></a>
+        <i class="fas fa-signature"></i>
+        Neboer's Homepage
+    </h2>
+    <p>Neboer这个名字取自于“初生牛犊”的 <em>New(ly) born ...</em> 每个词的前两个字，并在结尾加上“er”表示“人”。
+        这是一个很奇怪的拼合词，严格来说并不符合拼读规范。你可以把它读成“neighbor”这个词，这也是我推荐的读法。</p>
+    <p>Neboer是一个不太极端的技术爱好者，现居中国大陆。在技术上偏向网页设计，全栈懵逼，对前端技术较为热衷，有一定的js水平，
+        也喜欢linux系列，写过一些实用程序和网站，是一个开源软件倡导者，主力语言有Python javascript，C++和golang。</p>
+    <p>虽然并不是专业相关，但是还是最喜欢写程序和做网站，受到一些影响开始学一点日语。目前还是单身，也没有很喜欢的人，倒是喜欢几个动漫角色（笑）。
+        最喜欢的动画是电磁炮，美琴と黒子わ大好きです。生活里的朋友不多，喜欢听一些日风轻音乐和享受独自一人的感觉。</p>
+    <p>不是正统的游戏玩家，只是喜欢打联盟和玩一些单机游戏，几乎不玩手游，偶尔有想做游戏的想法，但是奈何一个人力量和水平有限。</p>
+    <p>你可以用中文或英语和我交流，发送邮件时请优先选择我的gmail邮箱。</p>
+    <p>没什么太多好说的，也没什么好了解的。关于Neboer我也所知不多，大概就是一只程序猿而已。</p>
+</div>
+</body>
+<style>
+    .alinement {
+        margin-right: .5em;
+    }
+
+    .banner {
+        max-width: 100%;
+    }
+
+    .biggest {
+        width: 75%;
+        margin: auto;
+    }
+
+    .icon-plate {
+        position: absolute;
+        right: 13%;
+    }
+
+    @media (max-width: 576px) {
+        .biggest {
+            width: 98%;
+            margin: auto;
+        }
+
+        .icon-plate {
+            position: absolute;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+</style>

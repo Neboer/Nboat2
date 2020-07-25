@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Neboer's Boat - {{ current }}</title>
+    <script src="/library/jquery-3.4.1.min.js"></script>
+    <script src="/library/popper.min.js"></script>
+    <script src="/library/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/library/bootstrap.min.css">
+    <script src="/library/font_awesome.js"></script>
+</head>
+
+<body>
+<div class="biggest">
+    <header class="py-lg-2">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="text-center mx-auto">
+                <h1 class="large-op">Neboer's Boat</h1>
+                <small>Neboer's blog isn't only about technique!</small>
+            </div>
+            <div class="icon-plate">
+                <a class="text-muted alinement"><i class="fab fa-github"></i></a>
+                <a class="text-muted alinement"><i class="fas fa-envelope"></i></a>
+                <a class="text-muted alinement"><i class="fas fa-search"></i></a>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="nav-scroller py-1 mb-2">
+        <ul class="nav nav-tabs flex-fill">
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link" href="/"><i class="fas fa-home"></i>主页</a>
+            </li>
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link active" href="/newest"><i class="fas fa-list"></i>最新的</a>
+            </li>
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link " href="/sort"><i class="fas fa-filter"></i>分类</a>
+            </li>
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link " href="#"><i class="fas fa-book-open"></i>看博文</a>
+            </li>
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link " href="#"><i class="fas fa-edit"></i>编辑博文</a>
+            </li>
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link " href="/newBlogQuill"><i class="fas fa-plus"></i>写博客</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="small-blog-item">
+        <div class="intro-area">
+            <h2>君の名は。</h2>
+            <article>The content of the article。这是文章内容的节选，文章内容实际会非常长，但是这里只包含一些基本的东西，但是这里只包含一些基本的东西，但是这里只包含一些基本的东西。
+            </article>
+        </div>
+        <div class="img-area">
+            <img src="https://dummyimage.com/200x200/000/fff" alt="good">
+        </div>
+        <div class="date-view-talk">
+            <small>创建:2020.1.24</small>
+            <small>修改:2020.10.10</small>
+            <span><i class="fas fa-eye"></i>257</span>
+            <span><i class="fas fa-comments"></i>1</span>
+        </div>
+    </div>
+
+    <div class="big-blog-item">
+        <div class="big-img-area">
+            <img src="https://dummyimage.com/1800x600/000/fff" alt="good" class="big-image">
+        </div>
+        <div class="big-intro-area">
+            <h2>内容丰富的主题博文</h2>
+            <article>这里是内容丰富的主题博文的内容预览部分。主题博文可以包含多篇文章，因此在展示上可以更大一些。主题博文也有专用的description。与普通博文不同，主题博文
+            的高度会尽可能容纳所有的描述文字，而不是普通博文的固定高度。因此主题博文的描述信息可以更加清楚地展示出来。</article>
+        </div>
+        <div class="date-view-talk">
+            <small>创建:2020.1.24</small>
+            <small>修改:2020.10.10</small>
+            <span><i class="fas fa-eye"></i>257</span>
+            <span><i class="fas fa-comments"></i>1</span>
+            <span><i class="fas fa-file"></i>3</span>
+        </div>
+    </div>
+</div>
+</body>
+<style>
+    .alinement {
+        margin-right: .5em;
+    }
+
+    .biggest {
+        width: 75%;
+        margin: auto;
+    }
+
+    .icon-plate {
+        position: absolute;
+        right: 13%;
+    }
+
+
+    .small-blog-item {
+        display: flex;
+        border: grey 1px solid;
+        border-radius: 2px;
+        padding: .5em;
+        width: 75%;
+        margin: 1rem auto;
+        position: relative;
+        box-shadow: grey 1px 1px;
+    }
+
+    .intro-area {
+        flex: 2;
+        overflow: hidden;
+        max-height: 180px;
+        margin-bottom: 1em;
+    }
+
+    .img-area {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        margin-left: auto;
+    }
+
+    .date-view-talk {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .big-blog-item {
+        border: grey 1px solid;
+        border-radius: 2px;
+        padding: .5em;
+        width: 75%;
+        margin: 1rem auto;
+        position: relative;
+        box-shadow: grey 1px 1px;
+    }
+
+    .big-img-area {
+        max-height: 200px;
+        overflow: hidden;
+    }
+
+    .big-image {
+        width: 100%;
+    }
+
+    .big-intro-area {
+        margin-bottom: 1em;
+        min-height: 150px;
+    }
+
+    @media (max-width: 512px) {
+        .biggest {
+            width: 98%;
+            margin: auto;
+        }
+
+        .icon-plate {
+            position: absolute;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .small-blog-item {
+            width: unset;
+        }
+
+        .big-blog-item {
+            width: unset;
+        }
+
+        .img-area {
+            display: none;
+        }
+    }
+</style>
