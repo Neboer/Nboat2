@@ -1,6 +1,6 @@
 const config = require('config')
 const db_connect = require('./database/connector')
-const home = require('./routes/home')
+const pages = require('./routes/pages')
 const express = require('express')
 app = express()
 app.set('view engine', 'pug')
@@ -12,6 +12,6 @@ db_connect(config.get('db.addr'), 'nboat', 'blog').then((collection) => {
         req.collection = collection
         next()
     });
-    app.use('/', home)
+    app.use('/', pages)
     app.listen(3000, () => console.log('Its working on port 3000'))
 })
