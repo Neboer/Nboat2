@@ -1,0 +1,21 @@
+mixin make_scripts(...scripts)
+    -
+        var script_index_list = {
+            'bootstrap': '/library/bootstrap.min.js',
+            'font_awesome': '/library/font_awesome.js',
+            'jquery': '/library/jquery-3.4.1.min.js',
+            'popper': '/library/popper.min.js',
+            'showdown': '/library/showdown.min.js'
+        }
+
+    each script_name in scripts
+        script(src=script_index_list[script_name])
+
+mixin make_css(...csss)
+    -
+        var css_index_list = {
+            'bootstrap': '/library/bootstrap.min.css'
+        }
+
+    each css_name in csss
+        link(rel="stylesheet" href=css_index_list[css_name])

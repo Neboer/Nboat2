@@ -1,2 +1,5 @@
 front/library
 .idea
+node_modules
+config/*
+!config/example.json
