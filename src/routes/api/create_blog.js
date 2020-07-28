@@ -1,6 +1,6 @@
-const database = require('src/database')
+const database = require('../../database')
 const router = require('express').Router()
-const validator = require('express-joi-validation').createValidator({})
+const validator = require('express-joi-validation').createValidator({passError:true})
 const schema = require('./input_schema')
 const showdown = require('showdown')
 const converter = new showdown.Converter()
