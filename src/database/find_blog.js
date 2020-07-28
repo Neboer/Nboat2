@@ -13,6 +13,6 @@ function get_blog_by_id(collection, target_blog_hex_id) {
     })
 }
 
-function list_blogs_by_title_keyword() {
+function list_blogs_by_title_keyword() {}
 
-}
+module.exports = {list_blogs_by_range, get_blog_by_id}

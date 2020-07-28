@@ -1,6 +1,4 @@
-const mongo = require('mongodb');
 const assert = require('assert');
-
 
 /**
  *
@@ -9,6 +7,7 @@ const assert = require('assert');
     small_cover: String,
     description: String,
     article: String,
+    HTML: String
     visible: boolean,
     tags: Array}} small_in 用户输入的新的小博客的原型
  * @return Promise, promise中你收到的第一个参数是新创建博客的hex id。
@@ -37,6 +36,7 @@ function create_simple_blog(collection, small_in) {
     small_cover: String,
     description: String,
     article: String,
+    HTML: String,
     visible: boolean,
     tags: Array}} big_in 用户输入的新的大博客的原型
  */
@@ -50,10 +50,17 @@ function create_big_blog(collection, big_in) {
             comment: []
         }
     }
-    big_db.article = [{content: big_in.article, index: 0}]
+    big_db.article = [{
+        content: big_in.article,
+        HTML: big_in.HTML,
+        index: 0,
+        create_time: new Date(),
+        last_modified_time: new Date()
+    }]
     return collection.insertOne(big_db).then(result => {
         assert.strictEqual(result.insertedCount, 1)
         return result.insertedId.toHexString()
     })
 }
 
+module.exports = {create_simple_blog, create_big_blog}

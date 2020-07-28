@@ -3,3 +3,4 @@ front/library
 node_modules
 config/*
 !config/example.json
+yarn-error.log
