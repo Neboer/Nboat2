@@ -57,6 +57,7 @@ function create_big_blog(collection, big_in) {
         create_time: new Date(),
         last_modified_time: new Date()
     }]
+    delete big_db.HTML
     return collection.insertOne(big_db).then(result => {
         assert.strictEqual(result.insertedCount, 1)
         return result.insertedId.toHexString()

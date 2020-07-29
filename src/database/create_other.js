@@ -9,9 +9,10 @@ const assert = require('assert');
  * @return Promise
  */
 function create_article_into_big_blog(collection, target_big_blog_hex_id, article_content, HTML) {
-    let new_article_index = 0;
-    return collection.findOne({'_id': toObjectID(target_big_blog_hex_id)}).then((r) => {
-        new_article_index = Math.max.apply(Math, r.article.map(function (o) {
+    let max_article_index = 0;
+    return collection.findOne({'_id': toObjectID(target_big_blog_hex_id), type: 1}).then((r) => {
+        assert.ok(r)
+        max_article_index = Math.max.apply(Math, r.article.map(function (o) {
             return o.index;
         }))
     }).then(() => {
@@ -20,7 +21,7 @@ function create_article_into_big_blog(collection, target_big_blog_hex_id, articl
                 article: {
                     content: article_content,
                     HTML: HTML,
-                    id: new_article_index,
+                    index: max_article_index + 1,
                     create_time: new Date(),
                     last_modified_time: new Date()
                 }
@@ -31,7 +32,7 @@ function create_article_into_big_blog(collection, target_big_blog_hex_id, articl
         })
     }).then((r) => {
         assert.ok(r.value)
-        return new_article_index
+        return max_article_index + 1
     })
 }
 

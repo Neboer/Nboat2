@@ -1,0 +1,79 @@
+
+
+### 以下是一个失败的尝试，它会产生一个数据库的错误。数据库模块应该很好的处理掉这个错误
+PUT http://localhost:3000/api/5f20922904acfd114e64c807/article
+Content-Type: application/json
+
+{
+  "article": "我不做人啦，jojo!"
+}
+
+###
+PUT http://localhost:3000/api/5f20a0bad00acf6a4590408b/article
+Content-Type: application/json
+
+{
+  "article": "我不做人啦，jojo!"
+}
+
+###
+PUT http://localhost:3000/api/5f20922904acfd114e64c807/meta
+Content-Type: application/json
+
+{
+  "title": "Big Blog Is Here!",
+  "big_cover": "http://image.google.com/hasbeenblocked",
+  "small_cover": "http://image.google.com/hasbeenblocked2",
+  "description": "newDescriptionishere",
+  "tags": [
+    "打坏蛋"
+  ]
+}
+
+###
+DELETE http://localhost:3000/api/5f20922904acfd114e64c807
+
+###
+DELETE http://localhost:3000/api/5f208eb7cd3cc40f755b6946
+
+###
+POST http://localhost:3000/api/5f20a0bad00acf6a4590408b/newArticle
+Content-Type: application/json
+
+{
+  "article": "# but a newer version is here and this will interrupt your idea"
+}
+
+###
+
+POST http://localhost:3000/api/newBlog
+Content-Type: application/json
+
+{
+  "title": "Big Blog Is Here!",
+  "big_cover": "https://img.baidu.com/wtf",
+  "small_cover": "https://img.baidu.com/small",
+  "description": "Neboer's boat isn't only about technique!",
+  "article": "# this is test article content, in markdown format.",
+  "type": 1,
+  "visible": true,
+  "tags": []
+}
+
+###
+POST http://localhost:3000/api/newBlog
+Content-Type: application/json
+
+{
+  "title": "A Tour To Golang",
+  "big_cover": "https://img.baidu.com/wtf",
+  "small_cover": "https://img.baidu.com/small",
+  "description": "Neboer's boat isn't only about technique!",
+  "article": "this is test article content, in markdown format.",
+  "type": 0,
+  "visible": true,
+  "tags": []
+}
+
+###
+
