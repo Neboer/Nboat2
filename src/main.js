@@ -1,6 +1,6 @@
 const config = require('config')
 const db_connect = require('./database/connector')
-const pages = require('./routes/pages')
+const pages = require('./routes/frontend/pages')
 const express = require('express')
 const backend = require('./routes/api')
 const bodyParser = require('body-parser');
@@ -17,6 +17,7 @@ db_connect(config.get('db.addr'), 'nboat', 'blog').then((collection) => {
         req.collection = collection
         next()
     });
+
     app.use('/', pages)
     app.use('/api', backend)
 

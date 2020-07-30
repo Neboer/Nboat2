@@ -1,6 +1,6 @@
-extends template
-include parts/menu_maker
-include parts/libs_maker
+extends ../template
+include ../public/menu_maker
+include ../public/libs_maker
 block title_and_libs
     title nboat blog editor
     +make_scripts('jquery','popper','bootstrap','font_awesome','showdown')
@@ -58,9 +58,5 @@ block content
 
 block scripts
     script
-        include parts/editor.js
-        if update
-            include parts/updateblog.js
-        else
-            include parts/newblog.js
+        include script/editor.js
 

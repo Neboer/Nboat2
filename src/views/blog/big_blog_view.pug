@@ -1,0 +1,66 @@
+extends ../template
+include ../public/menu_maker
+include ../public/libs_maker
+include ../public/pagination_maker
+block title_and_libs
+    title edit article
+    +make_scripts('jquery','popper','bootstrap','font_awesome')
+    +make_css('bootstrap')
+
+
+block page_menu
+    - var vl = isAuthed? [1,2,3,6]:[1,2,3]
+    +make_menu(vl,3)
+
+block content
+    h1#neboersboat
+        | Neboer's Boat
+        .d-inline-block(style="font-size: x-large")
+            each tag in blog.tags
+                span.badge.badge-secondary= tag
+            span.badge.badge-secondary
+                span
+                    i.fas.fa-eye= blog.views
+    blockquote(style="padding: 15px;background: #eee;border-radius: 5px;")= blog.description
+    .border.m-lg-2
+        | 编辑区域：
+        a(href="/" + blog._id + "/metaEditor") 修改meta
+        a(href="/" + blog._id + "/" + currentIndex + "/articleEditor") 修改这篇文章内容
+        a(href="/" + blog._id + "/articleCreator") 插入一篇新文章
+        a#visible_toggle(href="#") 设置为可见
+        a#delete_article(href="#") 删除这篇小文章
+        a#delete_blog(href="#") 删除这篇大博文
+    img.d-block.m-auto.mw-100(src=blog.big_cover, alt="banner")
+    a(href="#") 上一篇
+    a.float-right(href="#") 下一篇
+    article.markdown-body.entry-content.container-lg(itemprop="text")!= blog.article[currentIndex].HTML
+
+    -
+        var total_page_count =
+
+    +make_pagination()
+
+block scripts
+    script.
+        $("#visible_toggle").click(() => {
+            $.ajax({
+                type: "PUT",
+                url: "/api/#{blog._id}/visibility",
+                contentType: "application/json",
+                data: JSON.stringify({"visible": #{!blog.visible}})
+            });
+        })
+
+        $("#delete_article").click(() => {
+            $.ajax({
+                type: "DELETE",
+                url: "/api/#{blog._id}/#{currentIndex}"
+            })
+        })
+
+        $("#delete_blog").click(() => {
+            $.ajax({
+                type: "DELETE",
+                url: "/api/#{blog._id}"
+            })
+        })

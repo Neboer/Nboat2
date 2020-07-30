@@ -1,3 +1,4 @@
+// - 无论是修改博文还是创建新博文，这个文件总能用得上，但是还是要进行细致的拆分。
 let converter = new showdown.Converter()
 preview = $('#HTML_preview')
 editor = $('#full_edit')

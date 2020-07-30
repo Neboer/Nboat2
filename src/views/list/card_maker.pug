@@ -1,0 +1,27 @@
+mixin make_small_card(blog_title, introduction, image_source, create_time, last_modified_time, views, visible)
+    .small-blog-item(class=visible?"visible-blog":"invisible-blog")
+        .intro-area
+            h2= blog_title
+            article= introduction
+        .img-area
+            img(src=image_source, alt="banner_image")
+        .date-view-talk
+            small 创建:#{create_time.toLocaleDateString()}
+            small 修改:#{last_modified_time.toLocaleDateString()}
+            span
+                i.fas.fa-eye= views
+
+mixin make_large_card(blog_title, introduction, image_source, create_time, last_modified_time, views, article_count, visible)
+    .big-blog-item(class=visible?"visible-blog":"invisible-blog")
+        .big-img-area
+            img.big-image(src="https://dummyimage.com/1800x600/000/fff", alt="good")
+        .big-intro-area
+            h2= blog_title
+            article= introduction
+        .date-view-talk
+            small 创建:#{create_time.toLocaleDateString()}
+            small 修改:#{last_modified_time.toLocaleDateString()}
+            span
+                i.fas.fa-eye= views
+            span
+                i.fas.fa-file= article_count

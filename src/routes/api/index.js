@@ -26,6 +26,8 @@ main_api_router.use((err, req, res, next) => {
         res.status(400).send(err.error.details)
     } else if (err.name === 'AssertionError') {// 断言错误，就是目标不存在。
         res.status(404).send('Your request target isn\'t exist or meet your api.')
+    } else if (err.name === 'DeleteLastArticleError'){
+        res.status(400).send('Cannot delete the last blog in blog list!.')
     }
     else {
         res.status(400).send('invalid request')// 未知类型的错误，如果可能发生数据库内部错误则记录，再匹配。

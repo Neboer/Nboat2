@@ -58,6 +58,9 @@ const blog_article_content = Joi.object({article: Joi.string().required()})
 // 切换博客的可见性。
 const blog_visibility_setter = Joi.object({visible: Joi.boolean()})
 
+// 将小博文升级为大博文，传入的type必须是1
+const blog_type_changer = Joi.object({type: 1})
+
 // 切换小博客为大博客就算了，这只需要提供小博客的id就够了
 module.exports = {
     general_in,
@@ -68,5 +71,6 @@ module.exports = {
     blog_meta,
     small_meta_with_article_content,
     blog_article_content,
-    blog_visibility_setter
+    blog_visibility_setter,
+    blog_type_changer
 }

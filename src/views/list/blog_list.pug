@@ -1,0 +1,27 @@
+extends ../template
+include ../public/menu_maker
+include ../public/libs_maker
+include ../public/pagination_maker
+include card_maker
+block title_and_libs
+    title edit article
+    +make_scripts('jquery','popper','bootstrap','font_awesome')
+    +make_css('bootstrap')
+
+
+block page_menu
+    - var vl = isAuthed? [1,2,3,6]:[1,2,3]
+    +make_menu(vl,2)
+
+block content
+    each blog in blogList
+        if blog.type === 0
+            +make_small_card(blog.title, blog.description, blog.small_cover, blog.create_time, blog.last_modified_time, blog.views, blog.visible)
+        else
+            +make_large_card(blog.title, blog.description, blog.small_cover, blog.create_time, blog.last_modified_time, blog.views, blog.article.length,blog.visible)
+
+- var page_href_list = range(1, total_page).map(val => "/newest/" + val)
+
+
+
++make_pagination(currentPage, totalPage, page_href_list)

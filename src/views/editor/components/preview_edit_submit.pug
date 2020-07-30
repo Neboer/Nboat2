@@ -1,0 +1,13 @@
+.m-2
+    .btn-group.btn-group-toggle(data-toggle="buttons")
+        label.btn.btn-outline-primary
+            input#preview(type="radio" name="options")
+            i.fas.fa-eye
+            |  预览
+        label.btn.btn-outline-primary.active
+            input#edit(type="radio" name="options" checked="")
+            i.fas.fa-pencil-alt
+            |  编辑
+    button#submit.btn.btn-success.float-right
+        i.fas.fa-check
+        |  提交

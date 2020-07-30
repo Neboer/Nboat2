@@ -1,6 +1,6 @@
-extends template
-include parts/menu_maker
-include parts/libs_maker
+extends ../template
+include ../public/menu_maker
+include ../public/libs_maker
 block title_and_libs
     title Neboer's boat homepage
     +make_scripts('jquery','popper','bootstrap','font_awesome')
@@ -10,4 +10,4 @@ block page_menu
     +make_menu([1, 2, 3],1)
 
 block content
-    include parts/homepage_content.html
+    include homepage_content.html

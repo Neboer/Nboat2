@@ -59,4 +59,12 @@ router.put('/:blog_hex_id/visibility', validator.params(schema.blog_id),
         )
     })
 
+// 将一个小博文升级为大博文
+router.put('/:blog_hex_id/type', validator.params(schema.blog_id), validator.body(schema.blog_type_changer), (req, res, next) => {
+    route_to_next_and_send_error(
+        database.upgrade_small_blog_to_big_blog_by_hex_id(req.collection, req.params.blog_hex_id),
+        req, next
+    )
+})
+
 module.exports = router

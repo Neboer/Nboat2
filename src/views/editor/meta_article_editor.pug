@@ -1,0 +1,22 @@
+extends ../template
+include ../public/menu_maker
+include ../public/libs_maker
+block title_and_libs
+    title edit blog meta and article
+    +make_scripts('jquery','popper','bootstrap','font_awesome','showdown')
+    +make_css('bootstrap')
+
+
+block page_menu
+    +make_menu([1, 2, 3, 5, 6],5)
+
+block content
+    div
+        include components/preview_edit_submit
+    form
+        include components/meta
+    include components/article
+
+block scripts
+    script
+        include script/editor.js
