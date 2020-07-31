@@ -7,7 +7,8 @@ block title_and_libs
     +make_css('bootstrap')
 
 block page_menu
-    +make_menu([1, 2, 3],1)
+    - var vl = isAuthed? [1,2,3,6]:[1,2,3]
+    +make_menu(vl,2)
 
 block content
     include homepage_content.html

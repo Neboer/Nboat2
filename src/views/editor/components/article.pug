@@ -9,4 +9,14 @@
     button#copy_all.btn.btn-secondary
         i.fas.fa-copy
         | 全部复制到剪贴板
-textarea#MD_source.form-control.mt-3(rows="10") #
+-
+    var article_source_content = "#";
+    if (blog) {
+        if (blog.type === 0) {
+            article_source_content = blog.article
+        } else {
+            article_source_content = blog.article.find(article1 => article1.index === currentIndex).content
+        }
+    }
+
+textarea#MD_source.form-control.mt-3(rows="10")= article_source_content

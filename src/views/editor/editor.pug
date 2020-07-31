@@ -2,61 +2,53 @@ extends ../template
 include ../public/menu_maker
 include ../public/libs_maker
 block title_and_libs
-    title nboat blog editor
+    title edit article
     +make_scripts('jquery','popper','bootstrap','font_awesome','showdown')
     +make_css('bootstrap')
 
+
 block page_menu
-    // - 编辑博文和写博客的目录结构是不同的，这里取决于用户访问。渲染需要传入以下信息：update以及一个outBlogInfo（包含名字等的信息）。如果不是update，则无需info。
-    if update
-        +make_menu([1, 2, 3, 4, 5],5)
-    else
-        +make_menu([1, 2, 3, 6],6)
+    +make_menu([1, 2, 3, 5, 6],5)
 
 block content
-    div
-        .m-2
-            .btn-group.btn-group-toggle(data-toggle="buttons")
-                label.btn.btn-outline-primary
-                    input#preview(type="radio" name="options")
-                    i.fas.fa-eye
-                    |  预览
-                label.btn.btn-outline-primary.active
-                    input#edit(type="radio" name="options" checked="")
-                    i.fas.fa-pencil-alt
-                    |  编辑
-            button#submit.btn.btn-success.float-right
-                i.fas.fa-check
-                |  提交
-        #full_edit
-            form
-                .form-group.row
-                    label.col-sm-2.col-form-label(for="article_title") 文章标题
-                    .col-sm-10
-                        input#article_title.form-control(type="text")
-                .form-group.row
-                    label.col-sm-2.col-form-label(for="small_picture") 方形小图
-                    .col-sm-10
-                        input#small_picture.form-control(type="url")
-                .form-group.row
-                    label.col-sm-2.col-form-label(for="big_picture") 文章头图
-                    .col-sm-10
-                        input#big_picture.form-control(type="url")
-            .d-inline-block.m-1
-                button#upload_md.btn.btn-secondary
-                    i.fas.fa-arrow-up
-                    | 上传md源代码
-                button#download_md.btn.btn-secondary
-                    i.fas.fa-arrow-down
-                    | 下载md源代码
-            .d-inline-block.m-1
-                button#copy_all.btn.btn-secondary
-                    i.fas.fa-copy
-                    | 全部复制到剪贴板
-            textarea#MD_source.form-control.mt-3(rows="10") #
-        #HTML_preview
+    include components/preview_toolbar
+    #preview_area
+        if componentsList.includes("meta")
+            #preview_item
+                if (blog && blog.type === 1)
+                    include components/preview_big_card
+                else if (blog && blog.type === 0)
+                    include components/preview_small_card
+                else
+                    include components/preview_big_card
+                    include components/preview_small_card
+        if componentsList.includes("article")
+            #preview_article
+    #edit_area
+        form
+            if componentsList.includes("meta")
+                include components/meta
+            if componentsList.includes("extra")
+                include components/extra
+        if componentsList.includes("article")
+            include components/article
 
 block scripts
     script
-        include script/editor.js
+        if componentsList.includes("meta")
+            if (blog && blog.type === 1)
+                include script/big_card.js
+            else if (blog && blog.type === 0)
+                include script/small_card.js
+            else
+                include script/big_card.js
+                include script/small_card.js
+        if componentsList.includes("article")
+            include script/article.js
+        if componentsList.includes("extra")
+            include script/extra.js
+        include script/preview.js
+        -
+            var props_list = {
 
+            }

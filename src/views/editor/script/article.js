@@ -1,25 +1,12 @@
-// - 无论是修改博文还是创建新博文，这个文件总能用得上，但是还是要进行细致的拆分。
-let converter = new showdown.Converter()
-preview = $('#HTML_preview')
-editor = $('#full_edit')
-md_textarea = $('#MD_source')
-$('#preview').click(() => {
-    preview.show()
-    editor.hide()
-    let markdown = md_textarea.val()
-    let html_content = converter.makeHtml(markdown)
-    preview.html(html_content)
-})
+let markdown_source_editor = $('#MD_source')
+let copy_all_btn = $('#copy_all');
 
-$('#edit').click(() => {
-    preview.hide()
-    editor.show()
-})
 
 $('#download_md').click(() => {
     let link = document.createElement('a');
+
     let title = $('#article_title').val();
-    let file_content = $('#MD_source').val();
+    let file_content = markdown_source_editor.val();
     if (title !== '') {
         link.download = title + '.md';
     } else {
@@ -30,7 +17,6 @@ $('#download_md').click(() => {
     link.click();
 })
 
-let copy_all_btn = $('#copy_all');
 
 copy_all_btn.click(() => {
     md_textarea.select();

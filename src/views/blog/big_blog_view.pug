@@ -33,12 +33,11 @@ block content
     img.d-block.m-auto.mw-100(src=blog.big_cover, alt="banner")
     a(href="#") 上一篇
     a.float-right(href="#") 下一篇
-    article.markdown-body.entry-content.container-lg(itemprop="text")!= blog.article[currentIndex].HTML
+    article.markdown-body.entry-content.container-lg(itemprop="text")!= blog.article.find(article1 => article1.index === currentIndex).HTML
 
-    -
-        var total_page_count =
+    - var article_href_list = blog.article.map(article => "/#{blog._id}/" + article.index)
 
-    +make_pagination()
+    +make_pagination(blog.article.length, currentIndex, article_href_list)
 
 block scripts
     script.

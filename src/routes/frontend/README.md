@@ -20,5 +20,17 @@ isAuthed
 - currentIndex（当前用户访问页的index）
 
 ### editor 编辑博文
-- blog（要编辑的博文全文发来！如果是新建博文，此项留空！）
+- blog（要编辑的博文全文发来！如果是新建博文，此项留空，插入文章也要有）
+- currentIndex（如果要编辑大博文中的某篇文章，需要传递此篇文章的index）
+- componentsList[] (一个字符串列表，指出这个编辑器要包含哪些元件)
+    - meta
+    - extra
+    - article
+- which（指出要渲染什么编辑器）
+    - 1 article 更新一个小博文中的文章
+    - 2 article 更新一个大博文中指定articleIndex的文章
+    - 3 article 向一个大博文中添加一篇新文章
+    - 4 meta编辑器
+    - 5 meta&article编辑器
+    - 6 all用于新建一篇博文
 
