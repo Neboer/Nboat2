@@ -1,21 +1,20 @@
-extends ../template
-include ../public/menu_maker
-include ../public/libs_maker
-block title_and_libs
-    title edit blog meta info
-    +make_scripts('jquery','popper','bootstrap','font_awesome','showdown')
-    +make_css('bootstrap')
+extends editor_template
+block preview_area
+    if blog.type === 1
+        include components/preview_big_card
+    else
+        include components/preview_small_card
 
+block edit_area
+    include components/meta
 
-block page_menu
-    +make_menu([1, 2, 3, 5, 6],5)
-
-block content
-    div
-        include components/preview_edit_submit
-    form
-        include components/meta
 
 block scripts
-    script
-        include script/editor.js
+    include script/meta_init.js
+    if blog.type === 1
+        include script/big_card.js
+        include script/preview/meta_big.js
+    else
+        include script/small_card.js
+        include script/preview/meta_small.js
+    include script/submit/update_blog_meta.js

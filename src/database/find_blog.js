@@ -13,6 +13,14 @@ function get_blog_by_id(collection, target_blog_hex_id) {
     })
 }
 
+function get_document_count(collection, include_invisible) {
+    if (include_invisible){
+        return collection.estimatedDocumentCount()
+    } else {
+        return collection.countDocuments({visible: true})
+    }
+}
+
 function list_blogs_by_title_keyword() {}
 
-module.exports = {list_blogs_by_range, get_blog_by_id}
+module.exports = {list_blogs_by_range, get_blog_by_id, get_document_count}

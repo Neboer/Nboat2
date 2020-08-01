@@ -1,18 +1,14 @@
 extends editor_template
 block preview_area
     include components/preview_small_card
-    include components/preview_big_card
     #preview_article
 
 block edit_area
     include components/meta
-    include components/extra
     include components/article
-
 
 block scripts
     include script/article_init.js
     include script/meta_init.js
-    include script/extra_init.js
-    include script/preview/full.js
-    include script/submit/update_small_blog_full.js
+    include script/preview/meta_and_article.js
+    include script/submit/update_small_meta_and_article.js

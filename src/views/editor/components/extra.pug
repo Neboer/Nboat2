@@ -1,0 +1,12 @@
+.form-group.row.ml-0
+    .custom-control.custom-switch
+        input#visible.custom-control-input(type="checkbox")
+        label.custom-control-label(for="visible") 博文是否可见
+    .ml-lg-4
+        | 博客类型
+        .custom-control.custom-radio.custom-control-inline
+            input#is_big_blog.custom-control-input(type="radio", name="blog-type")
+            label.custom-control-label(for="is_big_blog") 大博文
+        .custom-control.custom-radio.custom-control-inline
+            input#is_small_blog.custom-control-input(type="radio", name="blog-type", checked=true)
+            label.custom-control-label(for="is_small_blog") 小博文

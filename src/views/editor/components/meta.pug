@@ -1,0 +1,20 @@
+.form-group.row
+    label.col-sm-2.col-form-label(for="meta_title") 文章标题
+    .col-sm-10
+        input#meta_title.form-control(type="text" value=(blog ? blog.title : ""))
+.form-group.row
+    label.col-sm-2.col-form-label(for="meta_description") 文章描述
+    .col-sm-10
+        input#meta_description.form-control(type="text" value=(blog ? blog.description : ""))
+.form-group.row
+    label.col-sm-2.col-form-label(for="meta_small_cover") 方形小图
+    .col-sm-10
+        input#meta_small_cover.form-control(type="url" value=(blog ? blog.small_cover : ""))
+.form-group.row
+    label.col-sm-2.col-form-label(for="meta_big_cover") 文章头图
+    .col-sm-10
+        input#meta_big_cover.form-control(type="url" value=(blog ? blog.big_cover : ""))
+.form-group.row
+    label.col-sm-2.col-form-label(for="meta_tags") 文章标签（英文逗号分隔）
+    .col-sm-10
+        input#meta_tags.form-control(type="url" value=(blog ? blog.big_cover : ""))

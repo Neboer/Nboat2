@@ -9,6 +9,7 @@
 isAuthed
 
 ### list
+/newest
 - isAuthed
 - blogList[]（完全按照大小博客的schema来传递，详情参阅database/model[]，同时应该注意转换一下id）
 - totalPage（注意统计的时候考虑到用户的身份）

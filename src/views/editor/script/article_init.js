@@ -1,6 +1,7 @@
 let markdown_source_editor = $('#MD_source')
 let copy_all_btn = $('#copy_all');
-
+let converter = new showdown.Converter()
+let preview_article = $('#preview_article')
 
 $('#download_md').click(() => {
     let link = document.createElement('a');
@@ -39,3 +40,9 @@ $('#upload_md').click(() => {
         fr.readAsText(inputer.files[0]);
     })
 })
+
+function render_article_preview() {
+    let markdown = markdown_source_editor.val()
+    let html_content = converter.makeHtml(markdown)
+    preview_article.html(html_content)
+}
