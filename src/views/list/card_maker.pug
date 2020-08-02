@@ -1,8 +1,11 @@
-mixin make_small_card(blog_title, introduction, image_source, create_time, last_modified_time, views, visible)
-    .small-blog-item(class=visible?"visible-blog":"invisible-blog")
+mixin make_small_card(blog_id, blog_title, introduction, image_source, create_time, last_modified_time, views, visible)
+    .small-blog-item(class=(visible ? "visible-blog" : "invisible-blog"))
         .intro-area
             h2= blog_title
             article= introduction
+            a.stretched-link(href="/blog/" + blog_id)
+                | 继续阅读
+                i.fas.fa-external-link-alt
         .img-area
             img(src=image_source, alt="banner_image")
         .date-view-talk
@@ -11,13 +14,16 @@ mixin make_small_card(blog_title, introduction, image_source, create_time, last_
             span
                 i.fas.fa-eye= views
 
-mixin make_large_card(blog_title, introduction, image_source, create_time, last_modified_time, views, article_count, visible)
-    .big-blog-item(class=visible?"visible-blog":"invisible-blog")
+mixin make_large_card(blog_id, blog_title, introduction, image_source, create_time, last_modified_time, views, article_count, visible)
+    .big-blog-item(class=(visible ? "visible-blog" : "invisible-blog"))
         .big-img-area
-            img.big-image(src="https://dummyimage.com/1800x600/000/fff", alt="good")
+            img.big-image(src=image_source, alt="banner")
         .big-intro-area
             h2= blog_title
             article= introduction
+            a.stretched-link(href="/blog/" + blog_id)
+                | 继续阅读
+                i.fas.fa-external-link-alt
         .date-view-talk
             small 创建:#{create_time.toLocaleDateString()}
             small 修改:#{last_modified_time.toLocaleDateString()}

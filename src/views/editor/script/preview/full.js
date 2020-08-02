@@ -1,7 +1,7 @@
 $('#preview').click(() => {
     render_small_card()
     render_big_card()
-    if (is_big_blog) {
+    if (is_big_blog()) {
         small_card.hide()
         big_card.show()
     } else {

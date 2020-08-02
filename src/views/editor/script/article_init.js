@@ -20,7 +20,7 @@ $('#download_md').click(() => {
 
 
 copy_all_btn.click(() => {
-    md_textarea.select();
+    markdown_source_editor.select();
     document.execCommand('copy');
     copy_all_btn.addClass('btn-success')
     setTimeout(() => {

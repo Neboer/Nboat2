@@ -1,8 +1,8 @@
 const toObjectID = require('mongodb').ObjectID.createFromHexString;
 const assert = require('assert');
 
-function list_blogs_by_range(collection, start, length, invisible) {
-    let find_object = invisible ? {} : {visible: true}
+function list_blogs_by_range(collection, start, length, show_invisible) {
+    let find_object = show_invisible ? {} : {visible: true}
     return collection.find(find_object, {limit: length, skip: start}).toArray() // 不需要进行错误检验，因为没必要检验。
 }
 

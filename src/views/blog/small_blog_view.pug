@@ -8,27 +8,29 @@ block title_and_libs
 
 
 block page_menu
-    - var vl = isAuthed? [1,2,3,6]:[1,2,3]
-    +make_menu(vl,3)
+    - var vl = isAuthed? [1,2,3,4,6]:[1,2,3,4]
+    +make_menu(vl,4)
 
 block content
     img.d-block.m-auto.mw-100(src=blog.big_cover, alt="banner")
     article.markdown-body.entry-content.container-lg(itemprop="text")
-        h1= blog.title
-        .d-inline-block(style="font-size: 7px")
-            each tag in blog.tags
-                small(style="border: blue 1px solid;border-radius: 11px;padding: 3px 10px;")= tag
-            span
-                i.fas.fa-eye= blog.views
+        h1
+            |#{blog.title}
+            .d-inline-block(style="font-size: x-large")
+                each tag in blog.tags
+                    span.badge.badge-secondary= tag
+                span.badge.badge-secondary
+                    span
+                        i.fas.fa-eye= blog.views
         if isAuthed
             .border.m-lg-2
                 | 编辑区域：
                 a(href="/" + blog._id + "/metaEditor") 修改meta
                 a(href="/" + blog._id + "/articleEditor") 修改这篇文章内容
-                a(href="/" + blog._id + "/fullEditor") 修改整篇博文
-                a#visible_toggle(href="javascript::none") 设置为#{blog.visible ? "不可见" : "可见"}
+                a(href="/" + blog._id + "/halfFullEditor") 修改整篇博文
+                a#visible_toggle(href="#") 设置为#{blog.visible ? "不可见" : "可见"}
                 a#upgrade_to_big(href="#") 升级为大博文
-                a#delete_blog 删除这篇博文
+                a#delete_blog(href="#") 删除这篇博文
         blockquote(style="padding: 15px;background: #eee;border-radius: 5px;")= blog.description
         != blog.HTML
 
@@ -39,7 +41,7 @@ block scripts
                 type: "PUT",
                 url: "/api/#{blog._id}/visibility",
                 contentType: "application/json",
-                data: JSON.stringify({"visible": #{blog.visible}})
+                data: JSON.stringify({"visible": #{!blog.visible}})
             });
         })
 
@@ -49,6 +51,18 @@ block scripts
                     url: "/api/#{blog._id}/type",
                     contentType: "application/json",
                     data: JSON.stringify({"type": 1})
+                })
+            }
+        )
+
+        $("#delete_blog").click(() => {
+                $.ajax({
+                    type: "DELETE",
+                    url: "/api/#{blog._id}",
+                    contentType: "application/json",
+                    success: () => {
+                        alert('')
+                    }
                 })
             }
         )

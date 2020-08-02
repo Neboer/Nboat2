@@ -19,11 +19,11 @@ html
                         h1.large-op Neboer's Boat
                         small Neboer's blog isn't only about technique!
                     .icon-plate
-                        a.text-muted.alinement
+                        a.text-muted.alignement
                             i.fab.fa-github
-                        a.text-muted.alinement
+                        a.text-muted.alignement
                             i.fas.fa-envelope
-                        a.text-muted.alinement
+                        a.text-muted.alignement
                             i.fas.fa-search
             block page_menu
 
@@ -32,31 +32,14 @@ html
     block scripts
         script
 
-    block style
-        style.
-            .alinement {
-                margin-right: .5em;
-            }
-            .banner {
-                max-width: 100%;
-            }
-            .biggest {
-                width: 75%;
-                margin: auto;
-            }
-            .icon-plate {
-                position: absolute;
-                right: 13%;
-            }
+    style
+        block style_desktop
+            include style/common.css
+        .
             @media (max-width: 576px) {
-                .biggest {
-                    width: 98%;
-                    margin: auto;
-                }
-                .icon-plate {
-                    position: absolute;
-                    right: 0;
-                    display: flex;
-                    flex-direction: column;
-                }
+
+        block style_mobile
+            include style/common_mobile.css
+        .
+
             }

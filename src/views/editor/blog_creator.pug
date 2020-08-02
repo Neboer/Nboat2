@@ -4,6 +4,9 @@ block preview_area
     include components/preview_big_card
     #preview_article
 
+block page_menu
+    +make_menu([1, 2, 3, 5, 6],6)
+
 block edit_area
     include components/meta
     include components/extra
@@ -12,7 +15,9 @@ block edit_area
 
 block scripts
     include script/article_init.js
+    include script/small_card.js
+    include script/big_card.js
     include script/meta_init.js
     include script/extra_init.js
     include script/preview/full.js
-    include script/submit/update_small_blog_full.js
+    include script/submit/submit_new_blog.js

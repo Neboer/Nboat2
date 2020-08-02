@@ -1,0 +1,11 @@
+.biggest {
+    width: 98%;
+    margin: auto;
+}
+
+.icon-plate {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+}

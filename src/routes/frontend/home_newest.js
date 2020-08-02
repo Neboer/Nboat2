@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/newest', (req, res, next) => {
-    let page = 0
+    let page = 1
     if (req.query.page) page = req.query.page
     database.get_document_count(req.collection, req.isAuthed).then(document_count => {
         let page_capacity = config.get('blogs_in_one_page')
@@ -16,7 +16,7 @@ router.get('/newest', (req, res, next) => {
         if (page > total_page) {
             next(req.not_found_error)
         } else {
-            database.list_blogs_by_range(req.collection, page_capacity * (page - 1), page_capacity * page).then(blogList => {
+            database.list_blogs_by_range(req.collection, page_capacity * (page - 1), page_capacity * page, req.isAuthed).then(blogList => {
                 res.render('list/blog_list.pug', {
                     isAuthed: req.isAuthed,
                     blogList,

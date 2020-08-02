@@ -22,7 +22,7 @@ function upgrade_small_blog_to_big_blog_by_hex_id(collection, small_blog_hex_id)
         return [{
             content: result.article,
             HTML: result.HTML,
-            id: 0,
+            index: 0,
             create_time: result.create_time,
             last_modified_time: result.last_modified_time
         }]

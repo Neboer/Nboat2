@@ -5,9 +5,9 @@ function submit() {
         small_cover: meta_small_cover.val(),
         description: meta_description.val(),
         article: markdown_source_editor.val(),
-        visible: visible,
+        visible: visible(),
         tags: meta_tags.val().split(","),
-        type: is_big_blog ? 1 : 0
+        type: is_big_blog() ? 1 : 0
     }
 
     $.ajax({

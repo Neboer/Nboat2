@@ -1,0 +1,14 @@
+extends template
+include public/menu_maker
+include public/libs_maker
+block title_and_libs
+    title edit article
+    +make_scripts('jquery','popper','bootstrap','font_awesome')
+    +make_css('bootstrap')
+
+block page_menu
+    - var vl = isAuthed? [1,2,3,6]:[1,2,3]
+    +make_menu(vl,3)
+
+block content
+    div 博文太少了，暂时没法分类，等多写一些再开发这个页面！

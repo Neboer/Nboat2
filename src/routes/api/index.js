@@ -22,6 +22,7 @@ main_api_router.use((req, res) => {
 })
 
 main_api_router.use((err, req, res, next) => {
+    console.info(err)
     if (err.type === 'body') {// schema错了。
         res.status(400).send(err.error.details)
     } else if (err.name === 'AssertionError') {// 断言错误，就是目标不存在。

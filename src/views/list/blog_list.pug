@@ -16,12 +16,16 @@ block page_menu
 block content
     each blog in blogList
         if blog.type === 0
-            +make_small_card(blog.title, blog.description, blog.small_cover, blog.create_time, blog.last_modified_time, blog.views, blog.visible)
+            +make_small_card(blog._id,blog.title, blog.description, blog.small_cover, blog.create_time, blog.last_modified_time, blog.views, blog.visible)
         else
-            +make_large_card(blog.title, blog.description, blog.small_cover, blog.create_time, blog.last_modified_time, blog.views, blog.article.length,blog.visible)
+            +make_large_card(blog._id,blog.title, blog.description, blog.small_cover, blog.create_time, blog.last_modified_time, blog.views, blog.article.length,blog.visible)
+    -
+        var range = (start, stop) => Array.from({length: stop - start + 1}, (_, i) => start + i);
+        var page_href_list = range(1, totalPage).map(val => "/newest/" + val)
+    +make_pagination(currentPage, totalPage, page_href_list)
 
-- var page_href_list = range(1, total_page).map(val => "/newest/" + val)
+block append style_desktop
+    include ../style/list.css
 
-
-
-+make_pagination(currentPage, totalPage, page_href_list)
+block append style_mobile
+    include ../style/list_mobile.css

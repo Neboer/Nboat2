@@ -5,6 +5,6 @@ let big_introduction = $('#big_introduction')
 
 function render_big_card() {
     big_image.attr("src", meta_small_cover.val());
-    big_title.innerText = meta_title.val();
-    big_introduction = meta_description.val()
+    big_title.text(meta_title.val());
+    big_introduction.text(meta_description.val())
 }

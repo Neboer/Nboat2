@@ -1,0 +1,53 @@
+.small-blog-item {
+    display: flex;
+    border: grey 1px solid;
+    border-radius: 2px;
+    padding: .5em;
+    width: 75%;
+    margin: 1rem auto;
+    position: relative;
+    box-shadow: grey 1px 1px;
+}
+
+.intro-area {
+    flex: 2;
+    overflow: hidden;
+    max-height: 180px;
+    margin-bottom: 1em;
+}
+
+.img-area {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    margin-left: auto;
+}
+
+.date-view-talk {
+    position: absolute;
+    bottom: 0;
+}
+
+.big-blog-item {
+    border: grey 1px solid;
+    border-radius: 2px;
+    padding: .5em;
+    width: 75%;
+    margin: 1rem auto;
+    position: relative;
+    box-shadow: grey 1px 1px;
+}
+
+.big-img-area {
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.big-image {
+    width: 100%;
+}
+
+.big-intro-area {
+    margin-bottom: 1em;
+    min-height: 150px;
+}

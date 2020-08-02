@@ -21,6 +21,13 @@ db_connect(config.get('db.addr'), 'nboat', 'blog').then((collection) => {
         next()
     });
 
+    app.get('/login' + config.get('secret'), (req, res, next) => {
+        if (!req.isAuthed){
+            res.cookie('secret',config.get('secret')).redirect('/')
+        }
+        next()
+    })
+
     app.use('/', pages)
     app.use('/api', backend)
 
