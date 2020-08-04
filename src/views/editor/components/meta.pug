@@ -17,4 +17,4 @@
 .form-group.row
     label.col-sm-2.col-form-label(for="meta_tags") 文章标签（英文逗号分隔）
     .col-sm-10
-        input#meta_tags.form-control(type="url" value=(blog ? blog.big_cover : ""))
+        input#meta_tags.form-control(type="url" value=(blog ? blog.tags.join() : ""))

@@ -8,6 +8,10 @@ router.get('/', (req, res) => {
 })
 
 router.get('/newest', (req, res, next) => {
+    res.redirect('/newest/1')
+})
+
+router.get('/newest/:page', (req, res, next) => {
     let page = 1
     if (req.query.page) page = req.query.page
     database.get_document_count(req.collection, req.isAuthed).then(document_count => {

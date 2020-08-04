@@ -23,44 +23,50 @@ block content
                     i.fas.fa-eye= blog.views
     blockquote(style="padding: 15px;background: #eee;border-radius: 5px;")= blog.description
     if isAuthed
-        .border.m-lg-2
-            | 编辑区域：
-            a(href="/" + blog._id + "/metaEditor") 修改meta
-            a(href="/" + blog._id + "/" + articleIndex + "/articleEditor") 修改这篇文章内容
-            a(href="/" + blog._id + "/articleCreator") 插入一篇新文章
-            a#visible_toggle(href="#") 设置为可见
-            a#delete_article(href="#") 删除这篇小文章
-            a#delete_blog(href="#") 删除这篇大博文
+        include big_toolbar
     img.d-block.m-auto.mw-100(src=blog.big_cover, alt="banner")
     a(href="#") 上一篇
     a.float-right(href="#") 下一篇
     article.markdown-body.entry-content.container-lg(itemprop="text")!= blog.article.find(article1 => article1.index === articleIndex).HTML
 
-    - var article_href_list = blog.article.map(article => ("/blog" + blog._id + "/" + article.index))
+    - var article_href_list = blog.article.map(article => ("/blog/" + blog._id + "/" + article.index))
 
     +make_pagination(articleIndex, blog.article.length, article_href_list)
 
+block append style_desktop
+    .
+        .fixed-width {
+        width: 60px
+        }
+
+
 block scripts
     script.
-        $("#visible_toggle").click(() => {
+        $("#toggle_visible").click(() => {
             $.ajax({
                 type: "PUT",
                 url: "/api/#{blog._id}/visibility",
                 contentType: "application/json",
-                data: JSON.stringify({"visible": #{!blog.visible}})
+                data: JSON.stringify({"visible": #{!blog.visible}}),
+                success: () => window.location.href = "/blog/#{blog._id}/#{articleIndex}",
+                error: (jqxhr, status) => alert(status)
             });
         })
 
-        $("#delete_article").click(() => {
+        $("#remove_current").click(() => {
             $.ajax({
                 type: "DELETE",
-                url: "/api/#{blog._id}/#{articleIndex}"
+                url: "/api/#{blog._id}/#{articleIndex}",
+                success: () => console.log('successful'),
+                error: (jqxhr, status) => alert(status)
             })
         })
 
-        $("#delete_blog").click(() => {
+        $("#delete").click(() => {
             $.ajax({
                 type: "DELETE",
-                url: "/api/#{blog._id}"
+                url: "/api/#{blog._id}",
+                success: () => console.log('successful'),
+                error: (jqxhr, status) => alert(status)
             })
         })

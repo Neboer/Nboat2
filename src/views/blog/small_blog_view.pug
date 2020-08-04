@@ -15,7 +15,7 @@ block content
     img.d-block.m-auto.mw-100(src=blog.big_cover, alt="banner")
     article.markdown-body.entry-content.container-lg(itemprop="text")
         h1
-            |#{blog.title}
+            | #{blog.title}
             .d-inline-block(style="font-size: x-large")
                 each tag in blog.tags
                     span.badge.badge-secondary= tag
@@ -23,25 +23,26 @@ block content
                     span
                         i.fas.fa-eye= blog.views
         if isAuthed
-            .border.m-lg-2
-                | 编辑区域：
-                a(href="/" + blog._id + "/metaEditor") 修改meta
-                a(href="/" + blog._id + "/articleEditor") 修改这篇文章内容
-                a(href="/" + blog._id + "/halfFullEditor") 修改整篇博文
-                a#visible_toggle(href="#") 设置为#{blog.visible ? "不可见" : "可见"}
-                a#upgrade_to_big(href="#") 升级为大博文
-                a#delete_blog(href="#") 删除这篇博文
+            include small_toolbar
         blockquote(style="padding: 15px;background: #eee;border-radius: 5px;")= blog.description
         != blog.HTML
 
+block append style_desktop
+    .
+        .fixed-width {
+        width: 60px
+        }
+
 block scripts
     script.
-        $("#visible_toggle").click(() => {
+        $("#toggle_visible").click(() => {
             $.ajax({
                 type: "PUT",
                 url: "/api/#{blog._id}/visibility",
                 contentType: "application/json",
-                data: JSON.stringify({"visible": #{!blog.visible}})
+                data: JSON.stringify({"visible": #{!blog.visible}}),
+                success: () => window.location.href = "/blog/#{blog._id}/#{articleIndex}",
+                error: (jqxhr, status) => alert(status)
             });
         })
 
@@ -55,14 +56,13 @@ block scripts
             }
         )
 
-        $("#delete_blog").click(() => {
+        $("#delete").click(() => {
                 $.ajax({
                     type: "DELETE",
                     url: "/api/#{blog._id}",
                     contentType: "application/json",
-                    success: () => {
-                        alert('')
-                    }
+                    success: () => console.log('successful'),
+                    error: (jqxhr, status) => alert(status)
                 })
             }
         )

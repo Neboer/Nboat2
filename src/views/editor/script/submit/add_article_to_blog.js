@@ -5,12 +5,12 @@ function submit() {
 
     $.ajax({
         method: "POST",
-        url: "/api" + blog_id + "/newArticle",
+        url: "/api/" + blog_id + "/newArticle",
         contentType: "application/json",
         data: JSON.stringify(post_data),
         success: (data => {
             alert("提交成功");
-            window.location.href = "/blog/" + data.id;
+            window.location.href = "/blog/" + blog_id + "/" + data.index;
         }),
         error: ((jqXHR, textStatus, errorThrown) => {
             alert(textStatus + errorThrown)

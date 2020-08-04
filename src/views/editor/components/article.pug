@@ -14,7 +14,9 @@
     if (blog) {
         if (blog.type === 0) {
             article_source_content = blog.article
-        } else {
+        }
+
+        if (articleIndex) {
             article_source_content = blog.article.find(article1 => article1.index === articleIndex).content
         }
     }
