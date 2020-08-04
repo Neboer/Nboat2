@@ -1,23 +1,20 @@
 mixin make_pagination(current_page, total_page, href_list)
     -
         var range = (start, stop) => Array.from({length: stop - start + 1}, (_, i) => start + i);
-        var previous_href = "#", next_href = "#"
-        href_list.forEach(index => {
-            if (index === (current_page - 1)) {
-                previous_href = (href_list[index - 1]?href_list[index - 1]:"#")
-                next_href = (href_list[index + 1]?href_list[index - 1]:"#")
-            }
-        })
+        var previous_href = href_list[current_page - 2]
+        var next_href = href_list[current_page]
 
     nav
         ul.pagination.justify-content-center
-            li.page-item(class=(current_page === 1 ? "disabled" : ""))
-                a.page-link(href=previous_href, tabindex="-1", aria-disabled="true")
-                    i.fa.fa-arrow-left
-            each num in range(1,total_page)
-                li.page-item(class=(current_page + 1 === num ? "active" : ""))
-                    a.page-link(href=href_list[num - 1])= num
-            li.page-item(class=(current_page === total_page ? "disabled" : ""))
-                a.page-link(href=next_href)
-                    i.fa.fa-arrow-right
+            if previous_href
+                li.page-item
+                    a.page-link(href=previous_href, tabindex="1", aria-disabled="true")
+                        i.fa.fa-arrow-left
+            each href1, index in href_list
+                li.page-item(class=(current_page === index + 1 ? "active" : ""))
+                    a.page-link(href=href1)= index + 1
+            if next_href
+                li.page-item
+                    a.page-link(href=next_href)
+                        i.fa.fa-arrow-right
 

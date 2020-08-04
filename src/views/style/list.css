@@ -9,6 +9,10 @@
     box-shadow: grey 1px 1px;
 }
 
+.invisible-blog {
+    background-color: lightyellow;
+}
+
 .intro-area {
     flex: 2;
     overflow: hidden;

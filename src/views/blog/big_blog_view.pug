@@ -3,7 +3,7 @@ include ../public/menu_maker
 include ../public/libs_maker
 include ../public/pagination_maker
 block title_and_libs
-    title edit article
+    title 查看博文
     +make_scripts('jquery','popper','bootstrap','font_awesome')
     +make_css('bootstrap')
 
@@ -13,25 +13,32 @@ block page_menu
     +make_menu(vl,4)
 
 block content
+    // - articleIndex 是用户直接请求的文章index，是url里的参数，这个参数不是页码！页码需要自己根据用户的输入的index来查找，页码不是articleIndex！
+
+    -
+        array_index_of_current_article = blog.article.findIndex(article1 => article1.index === articleIndex)// 这个数+1就是page
+        var article_href_list = blog.article.map(article => ("/blog/" + blog._id + "/" + article.index))// 这个是传递给目录的地址信息。
+        last_href = article_href_list[array_index_of_current_article - 1]
+        next_href = article_href_list[array_index_of_current_article + 1]
+
     h1#neboersboat
         | #{blog.title}
         .d-inline-block(style="font-size: x-large")
             each tag in blog.tags
-                span.badge.badge-secondary= tag
-            span.badge.badge-secondary
+                span.badge.badge-primary.mx-2= tag
+            span.badge.badge-secondary.mx-2
                 span
                     i.fas.fa-eye= blog.views
     blockquote(style="padding: 15px;background: #eee;border-radius: 5px;")= blog.description
     if isAuthed
         include big_toolbar
     img.d-block.m-auto.mw-100(src=blog.big_cover, alt="banner")
-    a(href="#") 上一篇
-    a.float-right(href="#") 下一篇
+    if !!last_href
+        a(href=last_href) 上一篇
+    if !!next_href
+        a.float-right(href=next_href) 下一篇
     article.markdown-body.entry-content.container-lg(itemprop="text")!= blog.article.find(article1 => article1.index === articleIndex).HTML
-
-    - var article_href_list = blog.article.map(article => ("/blog/" + blog._id + "/" + article.index))
-
-    +make_pagination(articleIndex, blog.article.length, article_href_list)
+    +make_pagination(array_index_of_current_article + 1, article_href_list.length, article_href_list)
 
 block append style_desktop
     .
@@ -57,7 +64,10 @@ block scripts
             $.ajax({
                 type: "DELETE",
                 url: "/api/#{blog._id}/#{articleIndex}",
-                success: () => console.log('successful'),
+                success: () => {
+                    console.log('删除成功');
+                    window.location.href = '/blog/#{blog._id}'
+                },
                 error: (jqxhr, status) => alert(status)
             })
         })
@@ -66,7 +76,10 @@ block scripts
             $.ajax({
                 type: "DELETE",
                 url: "/api/#{blog._id}",
-                success: () => console.log('successful'),
+                success: () => {
+                    console.log('成功删除此博客');
+                    window.location.href = '/newest'
+                },
                 error: (jqxhr, status) => alert(status)
             })
         })

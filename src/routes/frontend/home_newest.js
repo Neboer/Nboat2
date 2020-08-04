@@ -12,12 +12,11 @@ router.get('/newest', (req, res, next) => {
 })
 
 router.get('/newest/:page', (req, res, next) => {
-    let page = 1
-    if (req.query.page) page = req.query.page
+    let page = parseInt(req.params.page)
     database.get_document_count(req.collection, req.isAuthed).then(document_count => {
         let page_capacity = config.get('blogs_in_one_page')
         let total_page = Math.ceil(document_count / page_capacity)
-        if (page > total_page) {
+        if (isNaN(page)||page > total_page||page < 1) {
             next(req.not_found_error)
         } else {
             database.list_blogs_by_range(req.collection, page_capacity * (page - 1), page_capacity * page, req.isAuthed).then(blogList => {
