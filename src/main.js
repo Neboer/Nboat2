@@ -38,5 +38,5 @@ db_connect(config.get('db.addr'), 'nboat', 'blog').then((collection) => {
         }
         next()
     })
-    app.listen(3000, () => console.log('Its working on port 3000'))
+    app.listen(2334, () => console.log('Its working on port 2334'))
 })

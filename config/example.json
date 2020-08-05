@@ -1,1 +1,8 @@
-{}
+{
+  "db": {
+    "addr": "mongodb://localhost:27017"
+  },
+  "serve_static_libraries_files": true,
+  "blogs_in_one_page": 5,
+  "secret": "the password is here"
+}
