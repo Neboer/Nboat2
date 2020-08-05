@@ -1,7 +1,8 @@
 mixin list_item(item_name, item_href, item_choose, item_icon)
     li.nav-item.flex-grow-1.text-center
         a.nav-link(href=item_href, class=item_choose ? "active" : "")
-            i.fas(class="fa-" + item_icon) #{item_name}
+            i.fas(class="fa-" + item_icon)
+            | #{item_name}
 
 mixin make_menu(all_display_index, choose_index)
     -

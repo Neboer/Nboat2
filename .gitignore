@@ -4,3 +4,4 @@ node_modules
 config/*
 !config/example.json
 yarn-error.log
+src/views/public/libs_maker_server.pug

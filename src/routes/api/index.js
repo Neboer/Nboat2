@@ -1,15 +1,20 @@
 const express = require('express')
 const main_api_router = express.Router()
-// const error_handling_router = require('./error_handling')
 const sub_routers = [
     require('./create_blog'),
     require('./delete_blog'),
     require('./update_blog')
 ]
 
-main_api_router.use(sub_routers)
+function api_auth(req, res, next) {
+    if (!req.isAuthed) {
+        res.status(401).send("not authed")
+    }
+}
 
-// main_api_router.use(error_handling_router)
+main_api_router.use(api_auth)
+
+main_api_router.use(sub_routers)
 
 main_api_router.use((req, res) => {
     if (req.previous_middleware_return) {

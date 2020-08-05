@@ -1,9 +1,9 @@
 extends ../template
 include ../public/menu_maker
 include ../public/libs_maker
-block 查看博文
-    title edit article
-    +make_scripts('jquery','popper','bootstrap','font_awesome')
+block title_and_libs
+    title 查看博文
+    +make_scripts('jquery','bootstrap','font_awesome')
     +make_css('bootstrap')
 
 
@@ -21,7 +21,8 @@ block content
                     span.badge.badge-primary.mx-2= tag
                 span.badge.badge-secondary.mx-2
                     span
-                        i.fas.fa-eye= blog.views
+                        i.fas.fa-eye
+                        |#{blog.views}
         if isAuthed
             include small_toolbar
         blockquote(style="padding: 15px;background: #eee;border-radius: 5px;")= blog.description
