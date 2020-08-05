@@ -9,7 +9,7 @@ const sub_routers = [
 function api_auth(req, res, next) {
     if (!req.isAuthed) {
         res.status(401).send("not authed")
-    }
+    } else next()
 }
 
 main_api_router.use(api_auth)
