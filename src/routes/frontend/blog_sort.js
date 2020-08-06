@@ -15,7 +15,10 @@ router.get('/blog/:blog_hex_id', (req, res, next) => {
         database.get_blog_by_id(req.collection, req.params.blog_hex_id).then(blog => {
             if (blog.type === 1) res.redirect(req.url + "/" + blog.article[0].index)
             else if (!blog.visible && !req.isAuthed) next(req.not_found_error)
-            else res.render('blog/small_blog_view.pug', {blog, isAuthed: req.isAuthed})
+            else {
+                res.render('blog/small_blog_view.pug', {blog, isAuthed: req.isAuthed});
+                if (!req.isAuthed) database.increase_blog_total_visitor_by_hex_id(req.collection, req.params.blog_hex_id)
+            }
         }, err => next(err))
     } else next(req.not_found_error)
 })
@@ -31,6 +34,7 @@ router.get('/blog/:blog_hex_id/:article_index', (req, res, next) => {
                 if (!article_exist) next(req.not_found_error)
                 else
                     res.render('blog/big_blog_view.pug', {blog, isAuthed: req.isAuthed, articleIndex: article_index})
+                    if (!req.isAuthed) database.increase_blog_total_visitor_by_hex_id(req.collection, req.params.blog_hex_id)
             }
         }).catch(err => next(err))
     } else next(req.not_found_error)

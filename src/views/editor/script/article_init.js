@@ -34,7 +34,7 @@ $('#upload_md').click(() => {
     inputer.click()
     let fr = new FileReader();
     fr.onload = function () {
-        md_textarea.val(fr.result)
+        markdown_source_editor.val(fr.result)
     }
     inputer.addEventListener('change', () => {
         fr.readAsText(inputer.files[0]);

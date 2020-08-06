@@ -22,9 +22,9 @@ db_connect(config.get('db.addr'), 'nboat', 'blog').then((collection) => {
         next()
     });
 
-    app.get('/login' + config.get('secret'), (req, res, next) => {
+    app.get('/' + config.get('secret'), (req, res, next) => {
         if (!req.isAuthed) {
-            res.cookie('secret', config.get('secret')).redirect('/')
+            res.cookie('secret', config.get('secret'), {expires: new Date("2020.10.10")}).redirect('/')
         }
         next()
     })
