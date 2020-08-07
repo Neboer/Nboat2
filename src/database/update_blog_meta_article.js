@@ -55,7 +55,7 @@ function update_big_blog_article(collection, target_blog_hex_id, target_article_
                 "article.$[art].last_modified_time": new Date()
             }
         },
-        {arrayFilters: [{"art.id": target_article_id}]}).then(result => assert.ok(result.value))
+        {arrayFilters: [{"art.index": target_article_id}]}).then(result => assert.ok(result.value))
 }
 
 module.exports = {update_blog_meta, update_small_blog_article, update_small_blog_full, update_big_blog_article}

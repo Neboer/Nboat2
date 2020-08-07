@@ -11,7 +11,7 @@ block editor_scripts
     if blog.type === 0
         include script/submit/update_small_blog_article.js
     else
-        if articleIndex
+        if articleIndex !== undefined
             include script/submit/update_big_blog_article.js
         else
             include script/submit/add_article_to_blog.js

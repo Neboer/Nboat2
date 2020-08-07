@@ -22,7 +22,7 @@ var big_db = { // 存在于数据库内部的大主题博客
 var a = b.then(collection => collection.findOneAndUpdate(
     {'_id': mongo.ObjectID.createFromHexString("5f1edea47e40bd40214a9a2e")},
     {$set: {"cp.$[article].k": 16, "cp.$[article].time": new Date()}},
-    {'arrayFilters': [{"article.id": 1}]}
+    {'arrayFilters': [{"article.index": 1}]}
 ))
 
 // 注意，这里针对数据库而言的“in”，必然要有HTML。

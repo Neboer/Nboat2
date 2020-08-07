@@ -16,7 +16,7 @@
             article_source_content = blog.article
         }
 
-        if (articleIndex) {
+        if (articleIndex !== undefined) {
             article_source_content = blog.article.find(article1 => article1.index === articleIndex).content
         }
     }
