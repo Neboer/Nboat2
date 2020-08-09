@@ -14,6 +14,7 @@ app.set('view engine', 'pug')
 app.set('views', './src/views')
 app.use(bodyParser.json())
 app.use(cookieParser())
+if (config.get("webroot")) app.use('/', express.static(config.get("webroot")))
 if (config.get("serve_static_libraries_files")) app.use('/library', express.static('./front/library'))
 db_connect(config.get('db.addr'), 'nboat', 'blog').then((collection) => {
     app.use((req, res, next) => {
