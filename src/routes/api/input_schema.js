@@ -1,5 +1,5 @@
 // Joi validate对象。终于不用写schema了吗？好期待啊！
-const Joi = require('@hapi/joi')
+const { Joi } = require('celebrate');
 
 // 无论是big_blog还是small_blog，在最初创建的时候传入的肯定是这些参数。
 const general_in = Joi.object({

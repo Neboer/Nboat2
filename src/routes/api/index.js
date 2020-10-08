@@ -1,4 +1,5 @@
 const express = require('express')
+const { errors } = require('celebrate');
 const main_api_router = express.Router()
 const sub_routers = [
     require('./create_blog'),
@@ -25,6 +26,8 @@ main_api_router.use((req, res) => {
         res.status(404).send("no such api")
     }
 })
+
+main_api_router.use(errors())
 
 main_api_router.use((err, req, res, next) => {
     console.info(err)
