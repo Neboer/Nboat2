@@ -1,11 +1,11 @@
 mixin make_scripts(...scripts)
     -
         var script_index_list = {
-            'bootstrap': '/library/bootstrap.min.js',
-            'font_awesome': '/library/font_awesome.js',
-            'jquery': '/library/jquery-3.4.1.min.js',
-            'popper': '/library/popper.min.js',
-            'showdown': '/library/showdown.min.js'
+            'bootstrap': 'https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js',
+            'font_awesome': 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.14.0/js/all.min.js',
+            'jquery': 'https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js',
+            'popper': 'https://cdn.bootcdn.net/ajax/libs/popper.js/2.4.3/cjs/popper.min.js',
+            'showdown': 'https://cdn.bootcdn.net/ajax/libs/showdown/1.9.1/showdown.min.js'
         }
 
     each script_name in scripts
@@ -14,8 +14,7 @@ mixin make_scripts(...scripts)
 mixin make_css(...csss)
     -
         var css_index_list = {
-            'bootstrap': '/library/bootstrap.min.css',
-            'primer': '/library/primer.css'
+            'bootstrap': 'https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'
         }
 
     each css_name in csss
