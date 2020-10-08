@@ -178,6 +178,74 @@
 
 </div>
 </body>
+<dl class="form-group">
+    <dt><label for="form_comments">What would you like to report?</label></dt>
+    <dd class="js-write-bucket upload-enabled">
+        <textarea name="form[comments]" id="form_comments" placeholder="Please provide as much detail as possible about the account or behavior you are reporting. It's especially helpful to include specific examples in the form of URLs or screenshots." required="required" class="form-control input-block js-comment-field js-quick-submit" style="resize: vertical;"></textarea>
+
+        <label class="text-normal drag-and-drop hx_drag-and-drop position-relative d-flex flex-justify-between">
+            <input accept=".gif,.jpeg,.jpg,.png" type="file" multiple="" class="manual-file-chooser manual-file-chooser-transparent top-0 right-0 bottom-0 left-0 width-full ml-0 form-control">
+            <span class="bg-gray-light position-absolute top-0 left-0 width-full height-full rounded-1" style="pointer-events: none;"></span>
+            <span class="position-relative pr-2" style="pointer-events: none;">
+      <span class="default">
+        Attach files by dragging &amp; dropping, selecting or pasting them.
+      </span>
+      <span class="loading">
+        <img alt="" width="16" height="16" src="https://github.githubassets.com/images/spinners/octocat-spinner-32.gif"> Uploading your files…
+      </span>
+      <span class="error bad-file">
+        We don’t support that file type.
+        <span class="drag-and-drop-error-info">
+          <span class="btn-link">Try again</span> with a
+          GIF, JPEG, JPG or PNG.
+        </span>
+      </span>
+      <span class="error bad-permissions">
+        Attaching documents requires write permission to this repository.
+        <span class="drag-and-drop-error-info">
+          <span class="btn-link">Try again</span> with a GIF, JPEG, JPG or PNG.
+        </span>
+      </span>
+      <span class="error repository-required">
+        We don’t support that file type.
+        <span class="drag-and-drop-error-info">
+          <span class="btn-link">Try again</span> with a GIF, JPEG, JPG or PNG.
+        </span>
+      </span>
+      <span class="error too-big">
+        Yowza, that’s a big file
+        <span class="drag-and-drop-error-info">
+          <span class="btn-link">Try again</span> with a file smaller than 10MB.
+        </span>
+      </span>
+      <span class="error empty">
+        This file is empty.
+        <span class="drag-and-drop-error-info">
+          <span class="btn-link">Try again</span> with a file that’s not empty.
+        </span>
+      </span>
+      <span class="error hidden-file">
+        This file is hidden.
+        <span class="drag-and-drop-error-info">
+          <span class="btn-link">Try again</span> with another file.
+        </span>
+      </span>
+      <span class="error failed-request">
+        Something went really wrong, and we can’t process that file.
+        <span class="drag-and-drop-error-info">
+          <span class="btn-link">Try again.</span>
+        </span>
+      </span>
+    </span>
+            <span class="tooltipped tooltipped-nw" aria-label="Styling with Markdown is supported">
+      <a class="muted-link position-relative d-inline" href="https://guides.github.com/features/mastering-markdown/" target="_blank" data-ga-click="Markdown Toolbar, click, help" aria-label="Learn about styling with Markdown">
+        <svg class="octicon octicon-markdown v-align-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg>
+      </a>
+    </span>
+        </label>
+    </dd>
+</dl>
+
 <style>
     .alinement {
         margin-right: .5em;

@@ -9,8 +9,8 @@ mixin make_small_card(blog_id, blog_title, introduction, image_source, create_ti
         .img-area
             img(src=image_source, alt="banner_image")
         .date-view-talk
-            small 创建:#{create_time.toLocaleDateString()}
-            small 修改:#{last_modified_time.toLocaleDateString()}
+            small 创建:#{create_time.toLocaleString().split(" ")[0]}
+            small 修改:#{last_modified_time.toLocaleString().split(" ")[0]}
             span
                 i.fas.fa-eye
                 |#{views}
@@ -26,8 +26,8 @@ mixin make_large_card(blog_id, blog_title, introduction, image_source, create_ti
                 | 继续阅读
                 i.fas.fa-external-link-alt
         .date-view-talk
-            small 创建:#{create_time.toLocaleDateString()}
-            small 修改:#{last_modified_time.toLocaleDateString()}
+            small 创建:#{create_time.toLocaleString().split(" ")[0]}
+            small 修改:#{last_modified_time.toLocaleString().split(" ")[0]}
             span
                 i.fas.fa-eye
                 |#{views}
