@@ -25,7 +25,7 @@ db_connect(config.get('db.addr'), 'nboat', 'blog').then((collection) => {
 
     app.get('/' + config.get('secret'), (req, res, next) => {
         if (!req.isAuthed) {
-            res.cookie('secret', config.get('secret'), {expires: new Date("2020.10.10")}).redirect('/')
+            res.cookie('secret', config.get('secret'), {expires: new Date(config.get('cookie_expires'))}).redirect('/')
         }
         next()
     })
@@ -39,5 +39,5 @@ db_connect(config.get('db.addr'), 'nboat', 'blog').then((collection) => {
         }
         next()
     })
-    app.listen(2334, () => console.log('Its working on port 2334'))
+    app.listen(config.get('port'), () => console.log('Its working on port ' + config.get('port')))
 })

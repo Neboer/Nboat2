@@ -12,6 +12,9 @@
     position: absolute;
     right: 13%;
 }
+p img {
+    max-width: 100%;
+}
 #footer {
     text-align: center;
     color: grey;

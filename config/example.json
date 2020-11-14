@@ -5,5 +5,7 @@
   "serve_static_libraries_files": true,
   "blogs_in_one_page": 5,
   "secret": "the password is here",
+  "cookie_expires": "2021.10.10",
+  "port": 443,
   "webroot": "/www/webroot"
 }
